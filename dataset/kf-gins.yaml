@@ -1,0 +1,123 @@
+# KF-GINS configuration file
+
+# Windows下使用KF-GINS时，文件路径中不能有中文
+# When you run KF-GINS under Windows, there should be NO Chinese in the file path.
+
+# 场景选择 1: 桥梁  2: 边坡  3: 高楼  4: 大坝
+scenemode: 1
+
+# 滤波器设置 1: 21维滤波器 2: 15维滤波器
+filtermode: 2
+
+# IMU文件路径
+imupath: "../dataset/IMU_data.txt"
+
+# IMU文件列数，对于信息流则是数据个数
+imudatalen: 8
+
+# IMU原始数据频率[Hz]
+imudatarate: 200
+
+# GNSS文件路径
+gnsspath: "../dataset/GNSS_data.txt"
+
+# GNSS列数
+gnssdatalen: 8
+
+# 天线杆臂，IMU坐标系的前有下方向
+antlever: [ 0.0, 0.0, -0.185 ]
+
+# GNSS观测方差获取模式 1: 使用GNSS文件内数据  2: 固定值
+gnssmode: 1
+
+# GNSS固定方差[deg, deg, m]
+gnssnoise: [ 0.01, 0.01, 0.01 ]
+
+# GNSS方差调整倍率（默认为1）
+gnssscale: 5.0
+
+# GNSS更新频率
+gnsssinterval: 10
+
+# 起始GPS周及周内秒[s]
+startweek: 2371
+starttime: 208974
+
+# 终止GPS周及周内秒[s]
+endweek: 2371
+endtime: -1
+
+# 初始位置获取方式 1: 给定  2: GNSS文件中获取
+initposmode: 1
+
+# 初始位置[deg, deg, m]
+initpos: [ 30.472220034827544, 114.424253283124, 11.3084 ]
+# 归算桥梁位移时的参考坐标
+refpos: [ 30.472220034827544, 114.424253283124, 11.3112 ]
+
+# 初始速度，n系下北向，东向，地向[m/s, m/s, m/s]
+initvel: [ 0.0, 0.0, 0.0 ]
+
+# 初始姿态获取方式 0: 给定  1: 静态加速度计调平+给定航向  2: 抗晃动干扰的加速度计调平+给定航向
+alignmode: 1
+
+# 初始姿态，欧拉角(ZYX旋转顺序)，横滚，俯仰，航向[deg, deg, deg]
+initatt: [ -0.121590501074835, -0.475578938865592, 272.32 ]
+
+# 初始坐标方差（n系下）[m, m, m]
+initposstd: [ 0.1, 0.1, 0.1 ]
+
+# 初始速度标准差，n系下北向，东向，垂向速度[m/s, m/s, m/s]
+initvelstd: [ 0.02, 0.02, 0.02 ]
+
+# 初始姿态标准差，横滚，俯仰，航向[deg, deg, deg]
+initattstd: [ 0.5, 0.5, 0.2 ]
+
+# 姿态初始化时间[s]
+aligntime: 60
+
+# 初始IMU零偏和比例因子，对应前、右、下
+initgyrbias: [ -310, 527, 533 ]    # [deg/h]
+initaccbias: [ 0, 0, -1015 ]    # [mGal]
+initgyrscale: [ 0, 0, 0 ]   # [ppm]
+initaccscale: [ 0, 0, 0 ]   # [ppm]
+
+# IMU误差初始方差给定方式 0: 重新给定  1: 和IMU噪声中的std相同 2-?: 指定程序内的IMU模型
+initerrstdmode: 0
+
+# IMU误差初始方差
+# initbgstd: [ 50, 50, 50 ]          # [deg/h]
+# initbastd: [ 250, 250, 250 ]       # [mGal]
+# initsgstd: [ 1000, 1000, 1000 ]    # [ppm]
+# initsastd: [ 1000, 1000, 1000 ]    # [ppm]
+
+# IMU噪声
+imunoise:
+  arw: [0.15, 0.15, 0.15]          # [deg/sqrt(hr)]
+  vrw: [0.012, 0.012, 0.012]          # [m/s/sqrt(hr)]
+  gbstd: [20.0, 20.0, 20.0]        # [deg/hr]
+  abstd: [1000.0, 1000.0, 1000.0]     # [mGal]
+  gsstd: [1000.0, 1000.0, 1000.0]  # [ppm]
+  asstd: [1000.0, 1000.0, 1000.0]  # [ppm]
+  corrtime: 0.1                    # [hr]
+
+# 是否使用RTS
+userts: true
+
+# 抗差阈值
+innok0: 2.5
+innok1: 6.5
+innothreshold: 1e10
+
+# 结果输出路径
+outputpath: "../dataset"
+
+# 结果输出配置
+isoutimuerr: true
+isoutstd: true
+isbacklever: true
+
+# Fixed-lag配置（滞后时长）
+# TODO 尚未增加配置项
+
+# TODO 航向辅助选项
