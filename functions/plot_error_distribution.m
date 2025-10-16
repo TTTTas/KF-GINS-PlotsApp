@@ -9,8 +9,8 @@ function plot_error_distribution(error_data, str)
     end
 
     % 计算均值和标准差
-    mu = mean(error_data);
-    error_data = error_data - mu;
+    % mu = mean(error_data);
+    % error_data = error_data - mu;
     mu = mean(error_data);
     sigma = std(error_data);
 
