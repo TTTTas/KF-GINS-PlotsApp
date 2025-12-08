@@ -1,4 +1,18 @@
 function compare_pos(time, pva_time, res_blh, pva_blh, ref_pos, str)
+% ---------- 1. 找共同时间段 ----------
+t_start = max(time(1), pva_time(1));
+t_end   = min(time(end), pva_time(end));
+
+% 截取 res 部分
+idx_res = (time >= t_start & time <= t_end);
+time = time(idx_res);
+res_blh = res_blh(idx_res, :);
+
+% 截取 pva 部分
+idx_pva = (pva_time >= t_start & pva_time <= t_end);
+pva_time = pva_time(idx_pva);
+pva_blh = pva_blh(idx_pva, :);
+
 [rm, rn] = getRmRn(ref_pos(1));
 h = ref_pos(3);
 DR = diag([rm + h, (rn + h)*cos(ref_pos(1)), -1]);

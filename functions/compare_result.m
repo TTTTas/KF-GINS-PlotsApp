@@ -1,4 +1,19 @@
 function compare_result(time, pva_time, data, gins, str, ylabels)
+% ---------- 1. 找共同时间段 ----------
+t_start = max(time(1), pva_time(1));
+t_end   = min(time(end), pva_time(end));
+
+% 截取 res 部分
+idx_res = (time >= t_start & time <= t_end);
+time = time(idx_res);
+data = data(idx_res, :);
+
+% 截取 pva 部分
+idx_pva = (pva_time >= t_start & pva_time <= t_end);
+pva_time = pva_time(idx_pva);
+gins = gins(idx_pva, :);
+
+
 figure("Name", str)
 sub1 = subplot(3, 1, 1);
 plot(time, data(:, 1), "LineWidth", 2);
