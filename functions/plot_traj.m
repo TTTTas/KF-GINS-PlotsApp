@@ -1,4 +1,4 @@
-function plot_traj(blh, str, ref_pos)
+function plot_traj(blh, str, ref_pos, time)
 % position
 blh(:, 1) = deg2rad(blh(:, 1));
 blh(:, 2) = deg2rad(blh(:, 2));
@@ -23,4 +23,15 @@ xlabel('East[mm]');
 ylabel('North[mm]');
 grid("on");
 set(gca, 'FontSize', 20)
+figure("Name",str)
+ax1=subplot(2,1,1);
+plot(time, pos(:, 1)*1e3);
+ylabel('North[mm]');
+grid on
+ax2 = subplot(2,1,2);
+plot(time, pos(:,2)*1e3);
+ylabel('East[mm]');
+xlabel('Time [s]')
+grid on
+linkaxes([ax1, ax2], 'x');
 end
