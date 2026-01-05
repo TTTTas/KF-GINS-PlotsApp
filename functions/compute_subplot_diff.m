@@ -34,6 +34,7 @@ y2_interp = interp1(x2, y2, time_interp, 'linear');
 
 % -------- 差值 --------
 disp_error = y1_interp - y2_interp;
+disp_error = disp_error(1500:end);
 figure
 plot(disp_error)
 
